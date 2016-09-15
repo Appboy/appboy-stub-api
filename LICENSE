@@ -1,8 +1,8 @@
 Copyright (c) 2016 Appboy, Inc.
 All rights reserved.
 
-* Use of source code or binaries contained within Appboy's Stub API is permitted only to enable the development of testing tools around the Appboy platform by current customers of Appboy.
-* Modification of source code and inclusion in mobile apps is only permitted provided that all other conditions are met.
+* Use of source code or binaries contained within Appboy's Stub API is permitted only to enable testing and quality assurance of integrations with Appboy's platform by current customers of Appboy.
+* Modification of source code and inclusion in mobile apps, websites, and related code is only permitted provided that all other conditions are met.
 * Neither the name  "Appboy" nor the names of any of its contributors may be used to endorse or promote products derived from this software without the express prior written permission of Appboy.
 * Redistribution of source code or binaries is strictly prohibited except with the express prior written permission of Appboy. Any such redistribution must retain the above copyright notice, this list of conditions and the following disclaimer:
 
