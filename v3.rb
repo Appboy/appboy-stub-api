@@ -48,7 +48,7 @@ class StubApi < Sinatra::Base
     puts " "
     puts " "
     body_read = request.body.read
-    puts JSON.pretty_generate(body_read)
+    puts JSON.pretty_generate(MultiJson.decode(body_read))
     puts JSON.pretty_generate(request.env)
 
     response_body = {}
