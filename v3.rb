@@ -40,15 +40,18 @@ class StubApi < Sinatra::Base
   end
 
   post '/v3/data' do
-    response_body = {}
+    puts "REQUEST START"
+    puts " "
+    puts " "
+    puts " "
+    puts " "
+    puts " "
     body_read = request.body.read
     puts body_read
 
+    response_body = {}
     params = MultiJson.decode(body_read)
     params = HashWithIndifferentAccess.new(params)
-
-    puts params
-
     if params[:time].nil?
       halt_with_error("time must not be nil", response_body)
     end
