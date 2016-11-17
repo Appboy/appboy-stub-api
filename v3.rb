@@ -38,12 +38,14 @@ class StubApi < Sinatra::Base
     "the stub api is up!"
   end
 
-  post '/v3/data/' do
+  post '/v3/data' do
     response_body = {}
-    params = MultiJson.decode(request.body.read)
+    body_read = request.body.read
+    puts body_read
+
+    params = MultiJson.decode(body_read)
     params = HashWithIndifferentAccess.new(params)
 
-    puts request.body.read
     puts params
 
     if params[:time].nil?
