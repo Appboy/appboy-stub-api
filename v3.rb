@@ -4,6 +4,7 @@ require 'sinatra/cross_origin'
 require 'multi_json'
 require 'newrelic_rpm'
 require 'active_support/hash_with_indifferent_access'
+require 'active_support/core_ext/hash'
 
 class StubApi < Sinatra::Base
   register Sinatra::CrossOrigin
