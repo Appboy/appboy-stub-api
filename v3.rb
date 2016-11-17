@@ -298,10 +298,10 @@ class StubApi < Sinatra::Base
       end
     end
 
-    if params[:api_key].starts_with?("sleep_")
-      sleep_time = params[:api_key][6..-1].to_i
-      sleep sleep_time
-    end
+    # if params[:api_key].starts_with?("sleep_")
+    #   sleep_time = params[:api_key][6..-1].to_i
+    #   sleep sleep_time
+    # end
 
     response_body.to_json
   end
