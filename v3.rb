@@ -43,6 +43,9 @@ class StubApi < Sinatra::Base
     params = MultiJson.decode(request.body.read)
     params = HashWithIndifferentAccess.new(params)
 
+    puts request.body.read
+    puts params
+
     if params[:time].nil?
       halt_with_error("time must not be nil", response_body)
     end
