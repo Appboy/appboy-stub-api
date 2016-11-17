@@ -5,6 +5,7 @@ require 'multi_json'
 require 'newrelic_rpm'
 require 'active_support/hash_with_indifferent_access'
 require 'active_support/core_ext/hash'
+require 'json'
 
 class StubApi < Sinatra::Base
   register Sinatra::CrossOrigin
@@ -48,7 +49,7 @@ class StubApi < Sinatra::Base
     puts " "
     body_read = request.body.read
     puts body_read
-    puts request.env
+    puts JSON.pretty_generate(request.env)
 
     response_body = {}
     params = MultiJson.decode(body_read)
