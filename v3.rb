@@ -39,15 +39,16 @@ class StubApi < Sinatra::Base
     "the stub api is up!"
   end
 
-  post '/v3/data' do
-    puts "REQUEST START"
+  post '/v3/data/?' do
     puts " "
+    puts "REQUEST START"
     puts " "
     puts " "
     puts " "
     puts " "
     body_read = request.body.read
     puts body_read
+    puts request.env
 
     response_body = {}
     params = MultiJson.decode(body_read)
