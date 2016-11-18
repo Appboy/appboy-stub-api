@@ -40,6 +40,22 @@ class StubApi < Sinatra::Base
     "the stub api is up!"
   end
 
+  post '/v3/feedback/?' do
+    puts " "
+    puts "FEEDBACK REQUEST START"
+    puts " "
+    puts " "
+    puts " "
+    puts " "
+    body_read = request.body.read
+    puts "headers"
+    puts JSON.pretty_generate(request.env)
+    puts "body"
+    puts JSON.pretty_generate(MultiJson.decode(body_read))
+
+    "feedback is up"
+  end
+
   post '/v3/data/?' do
     puts " "
     puts "REQUEST START"
