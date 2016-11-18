@@ -54,6 +54,7 @@ class StubApi < Sinatra::Base
     puts JSON.pretty_generate(MultiJson.decode(body_read))
 
     response_body = {}
+    response_body[:heh] = "test feedback i guess"
 
     puts "response"
     puts JSON.pretty_generate(response_body)
