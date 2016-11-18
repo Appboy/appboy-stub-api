@@ -53,7 +53,11 @@ class StubApi < Sinatra::Base
     puts "body"
     puts JSON.pretty_generate(MultiJson.decode(body_read))
 
-    "feedback is up"
+    response_body = {}
+
+    puts "response"
+    puts JSON.pretty_generate(response_body)
+    response_body.to_json
   end
 
   post '/v3/data/?' do
