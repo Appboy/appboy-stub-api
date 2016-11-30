@@ -66,8 +66,6 @@ class StubApi < Sinatra::Base
     puts "REQUEST START"
     puts " "
     puts " "
-    puts " "
-    puts " "
     body_read = request.body.read
     # puts "headers"
     # puts JSON.pretty_generate(request.env)
