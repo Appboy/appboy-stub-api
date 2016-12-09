@@ -40,7 +40,7 @@ class StubApi < Sinatra::Base
     "the stub api is up!"
   end
 
-  post '/v2/data/?' do
+  post 'api/v2/data/?' do
     puts " "
     puts "v2 data sent?!"
     puts " "
