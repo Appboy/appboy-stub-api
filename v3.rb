@@ -306,6 +306,7 @@ class StubApi < Sinatra::Base
           "uri" => "http://google.com",
           "message_close" => "AUTO_DISMISS",
           "icon" => "\uf042",
+          "type" => "FULL",
           "icon_color" => 4294901760
         }
 
