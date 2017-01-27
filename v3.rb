@@ -152,9 +152,9 @@ class StubApi < Sinatra::Base
 
     if !params[:attributes].nil?
       attributes_object = params[:attributes]
-      # params[:attributes].each do |attributes_object|
+      params[:attributes].each do |attributes_object|
         logger.info("Received attributes for user #{attributes_object[:user_id]} with custom #{attributes_object[:custom].inspect}, push_token #{attributes_object[:push_token]}, first_name #{attributes_object[:first_name]}, last_name #{attributes_object[:last_name]}, email #{attributes_object[:email]}, dob #{attributes_object[:dob]}, country #{attributes_object[:country]}, home_city #{attributes_object[:home_city]}, bio #{attributes_object[:bio]}, gender #{attributes_object[:gender]}, phone #{attributes_object[:phone]}, email_subscribe #{attributes_object[:email_subscribe]}, push_subscribe #{attributes_object[:push_subscribe]}, image_url #{attributes_object[:image_url]}, facebook #{attributes_object[:facebook]}, twitter #{attributes_object[:twitter]}, foursquare #{attributes_object[:foursquare]}, foursquare_access_token #{attributes_object[:foursquare_access_token]}")
-      # end
+      end
     end
 
     if !params[:feedback].nil?
