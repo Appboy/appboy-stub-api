@@ -3,6 +3,9 @@ require 'sinatra/base'
 require 'sinatra/cross_origin'
 require 'multi_json'
 require 'newrelic_rpm'
+require 'active_support/hash_with_indifferent_access'
+require 'active_support/core_ext/hash'
+require 'json'
 
 class StubApi < Sinatra::Base
   register Sinatra::CrossOrigin
@@ -37,11 +40,62 @@ class StubApi < Sinatra::Base
     "the stub api is up!"
   end
 
-  post '/v3/data/' do
-    response_body = {}
-    params = MultiJson.decode(request.body.read)
-    params = HashWithIndifferentAccess.new(params)
+  post '/api/v2/data/?' do
+    puts " "
+    puts "v2 data sent?!"
+    puts " "
+    puts " "
+    puts " "
+    puts " "
+    body_read = request.body.read
+    puts "headers"
+    puts JSON.pretty_generate(request.env)
+    puts "body"
+    puts JSON.pretty_generate(MultiJson.decode(body_read))
 
+    response_body = {}
+    response_body[:heh] = "v2 whyyy"
+
+    puts "response"
+    puts JSON.pretty_generate(response_body)
+    response_body.to_json
+  end
+
+  post '/v3/feedback/?' do
+    puts " "
+    puts "FEEDBACK REQUEST START"
+    puts " "
+    puts " "
+    puts " "
+    puts " "
+    body_read = request.body.read
+    # puts "headers"
+    # puts JSON.pretty_generate(request.env)
+    puts "body"
+    puts JSON.pretty_generate(MultiJson.decode(body_read))
+
+    response_body = {}
+    response_body[:heh] = "test feedback i guess"
+
+    puts "response"
+    puts JSON.pretty_generate(response_body)
+    response_body.to_json
+  end
+
+  post '/v3/data/?' do
+    puts " "
+    puts "REQUEST START"
+    puts " "
+    puts " "
+    body_read = request.body.read
+    # puts "headers"
+    # puts JSON.pretty_generate(request.env)
+    puts "body"
+    puts JSON.pretty_generate(MultiJson.decode(body_read))
+
+    response_body = {}
+    params = MultiJson.decode(body_read)
+    params = HashWithIndifferentAccess.new(params)
     if params[:time].nil?
       halt_with_error("time must not be nil", response_body)
     end
@@ -97,6 +151,7 @@ class StubApi < Sinatra::Base
     end
 
     if !params[:attributes].nil?
+      attributes_object = params[:attributes]
       params[:attributes].each do |attributes_object|
         logger.info("Received attributes for user #{attributes_object[:user_id]} with custom #{attributes_object[:custom].inspect}, push_token #{attributes_object[:push_token]}, first_name #{attributes_object[:first_name]}, last_name #{attributes_object[:last_name]}, email #{attributes_object[:email]}, dob #{attributes_object[:dob]}, country #{attributes_object[:country]}, home_city #{attributes_object[:home_city]}, bio #{attributes_object[:bio]}, gender #{attributes_object[:gender]}, phone #{attributes_object[:phone]}, email_subscribe #{attributes_object[:email_subscribe]}, push_subscribe #{attributes_object[:push_subscribe]}, image_url #{attributes_object[:image_url]}, facebook #{attributes_object[:facebook]}, twitter #{attributes_object[:twitter]}, foursquare #{attributes_object[:foursquare]}, foursquare_access_token #{attributes_object[:foursquare_access_token]}")
       end
@@ -251,6 +306,7 @@ class StubApi < Sinatra::Base
           "uri" => "http://google.com",
           "message_close" => "AUTO_DISMISS",
           "icon" => "\uf042",
+          "type" => "FULL",
           "icon_color" => 4294901760
         }
 
@@ -291,11 +347,13 @@ class StubApi < Sinatra::Base
       end
     end
 
-    if params[:api_key].starts_with?("sleep_")
-      sleep_time = params[:api_key][6..-1].to_i
-      sleep sleep_time
-    end
+    # if params[:api_key].starts_with?("sleep_")
+    #   sleep_time = params[:api_key][6..-1].to_i
+    #   sleep sleep_time
+    # end
 
+    puts "response"
+    puts JSON.pretty_generate(response_body)
     response_body.to_json
   end
 end
