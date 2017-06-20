@@ -342,7 +342,10 @@ class StubApi < Sinatra::Base
           "time" => Time.now.to_i,
           "events_blacklist" => ["blacklisted_event1", "blacklisted_event2"],
           "attributes_blacklist" => ["blacklisted_attribute1", "blacklisted_attribute2"],
-          "purchases_blacklist" => ["blacklisted_purchase1", "blacklisted_purchase2"]
+          "purchases_blacklist" => ["blacklisted_purchase1", "blacklisted_purchase2"],
+          "test_user" => {
+            "device_logging_enabled" => true
+          }
         }
       end
     end
